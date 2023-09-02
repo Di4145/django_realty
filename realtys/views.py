@@ -12,6 +12,6 @@ def search(request):
     return render(request, 'search.html', {'realtys': realtys})
 
 
-# def details(request):
-#     realty = Realty.objects.all()
-#     return render(request, 'detail.html', )
+def detail(request, id):
+    realty = Realty.objects.get(id=id)
+    return render(request, 'detail.html', {'realty': realty})
