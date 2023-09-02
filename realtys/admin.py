@@ -4,7 +4,7 @@ import realtys.models
 
 
 class RealtyAdmin(admin.ModelAdmin):
-    list_display = ('type', 'cost', 'info')
+    list_display = ('type', 'cost')
 
 
 # Register your models here.
