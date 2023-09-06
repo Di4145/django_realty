@@ -11,6 +11,8 @@ def search(request):
     text_q = request.GET.get('text')
     price1_q = request.GET.get('price1')
     price2_q = request.GET.get('price2')
+    s1_q = request.GET.get('s1')
+    s2_q = request.GET.get('s2')
 
     if text_q:
         realtys = Realty.objects.filter(info__iregex=text_q)
@@ -23,7 +25,11 @@ def search(request):
     if price2_q:
         realtys = realtys.filter(cost__lte=price2_q)
 
+    if s1_q:
+        realtys = realtys.filter(s__gte=s1_q)
 
+    if s2_q:
+        realtys = realtys.filter(s__lte=s2_q)
 
     return render(request, 'search.html', {'realtys': realtys})
 

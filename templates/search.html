@@ -139,10 +139,14 @@
       <div class="container">
         <div class="row">
           <div class="col-sm-12">
+
+
             <form action="" method="GET">
               <input name="text" placeholder="Поиск" value="{{ request.GET.text}}">
-              <input name="price1" placeholder="Цена от" value="{{ request.GET.price1}}">
-              <input name="price2" placeholder="Цена до" value="{{ request.GET.price2}}">
+              <input name="price1" placeholder="Цена от" value="{{request.GET.price1}}">
+              <input name="price2" placeholder="Цена до" value="{{request.GET.price2}}">
+              <input name="s1" placeholder="Площадь от" value="{{request.GET.s1}}">
+              <input name="s2" placeholder="Площадь до" value="{{request.GET.s2}}">
               <button type="submit">Найти </button>
             </form>
 
