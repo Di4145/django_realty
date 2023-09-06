@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-
+{% load humanize %}
 
  <!-- ======= Property Search Section ======= -->
   <div class="click-closed"></div>
@@ -124,7 +124,9 @@
             </nav>
           </div>
         </div>
+
       </div>
+
     </section><!-- End Intro Single-->
 
 
@@ -137,6 +139,18 @@
       <div class="container">
         <div class="row">
           <div class="col-sm-12">
+            <form action="" method="GET">
+              <input name="text" placeholder="Поиск" value="{{ request.GET.text}}">
+              <input name="price1" placeholder="Цена от" value="{{ request.GET.price1}}">
+              <input name="price2" placeholder="Цена до" value="{{ request.GET.price2}}">
+              <button type="submit">Найти </button>
+            </form>
+
+
+
+
+
+
             <div class="grid-option">
               <form>
                 <select class="custom-select">
@@ -164,7 +178,7 @@
                   </div>
                   <div class="card-body-a">
                     <div class="price-box d-flex">
-                      <span class="price-a">Стоимость ₽ {{ realty.cost }}</span>
+                      <span class="price-a">Стоимость ₽ {{ realty.cost|intcomma }}</span>
                     </div>
 <!--                    <a href="property-single.html" class="link-a">Click here to view-->
                       <span class="bi bi-chevron-right"></span>
