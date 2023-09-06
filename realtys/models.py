@@ -18,6 +18,7 @@ class RealtyManager(models.Model):
 
 
 class Realty(models.Model):
+    header = models.CharField(max_length=40, null=True, blank=True)
     type = models.ForeignKey(RealtyType, on_delete=models.PROTECT)
     cost = models.IntegerField()
     s = models.DecimalField(decimal_places=1, max_digits=8)

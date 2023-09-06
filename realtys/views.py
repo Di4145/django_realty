@@ -9,6 +9,7 @@ def index(request):
 
 def search(request):
     realtys = Realty.objects.all()
+    # realtys = Realty.objects.filter(info__iregex='балкон')
     return render(request, 'search.html', {'realtys': realtys})
 
 
