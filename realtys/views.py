@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from realtys.models import Realty
+from realtys.models import Realty, RealtyType
+from django.db.models import Q
 # Create your views here.
 
 
@@ -13,9 +14,15 @@ def search(request):
     price2_q = request.GET.get('price2')
     s1_q = request.GET.get('s1')
     s2_q = request.GET.get('s2')
+    type_q = request.GET.get('type')
+
 
     if text_q:
-        realtys = Realty.objects.filter(info__iregex=text_q)
+        text = text_q.split()
+        q_object = Q()
+        for i in text:
+            q_object &= (Q(info__iregex=i) | Q(header__iregex=i))
+        realtys = Realty.objects.filter(q_object)
     else:
         realtys = Realty.objects.all()
 
@@ -31,7 +38,12 @@ def search(request):
     if s2_q:
         realtys = realtys.filter(s__lte=s2_q)
 
-    return render(request, 'search.html', {'realtys': realtys})
+    if type_q:
+        realtys = realtys.filter(type=type_q)
+
+    types = RealtyType.objects.all()
+
+    return render(request, 'search.html', {'realtys': realtys, 'types': types})
 
 
 def detail(request, id):

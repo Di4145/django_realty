@@ -142,12 +142,22 @@
 
 
             <form action="" method="GET">
+              <select name="type" onchange="this.form.submit()">
+
+                 <option value="">тип недвижимости</option>
+                {% for type in types %}
+                 <option value="{{type.id}}" {% if request.GET.type|stringformat:"s" == type.id|stringformat:"s" %} selected {% endif %} >{{type.type}}</option>
+
+                {% endfor %}
+
+              </select>
               <input name="text" placeholder="Поиск" value="{{ request.GET.text}}">
               <input name="price1" placeholder="Цена от" value="{{request.GET.price1}}">
               <input name="price2" placeholder="Цена до" value="{{request.GET.price2}}">
-              <input name="s1" placeholder="Площадь от" value="{{request.GET.s1}}">
-              <input name="s2" placeholder="Площадь до" value="{{request.GET.s2}}">
+<!--              <input name="s1" placeholder="Площадь от" value="{{request.GET.s1}}">-->
+<!--              <input name="s2" placeholder="Площадь до" value="{{request.GET.s2}}">-->
               <button type="submit">Найти </button>
+
             </form>
 
 
@@ -156,14 +166,7 @@
 
 
             <div class="grid-option">
-              <form>
-                <select class="custom-select">
-                  <option selected>All</option>
-                  <option value="1">New to Old</option>
-                  <option value="2">For Rent</option>
-                  <option value="3">For Sale</option>
-                </select>
-              </form>
+
             </div>
           </div>
 {% for realty in realtys %}
