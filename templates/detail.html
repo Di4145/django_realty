@@ -12,7 +12,7 @@
                 <div class="card-overlay-a-content">
                   <div class="card-header-a">
                     <h2 class="card-title-a">
-                      <a href="{% url 'detail_page' realty.id %}">{{realty.header}}
+                      <a href="{% url 'detail_page' realty.id %}">{{realty.header}}</a>>
 
 
                     </h2>
@@ -45,26 +45,23 @@
 
                       <br>
                       {{realty.manager}}
-
                     </ul>
-
                   </div>
-
                 </div>
-
               </div>
-
             </div>
 
           </div>
-
-
-
-
-
-
-
-
-
 {{realty.info}}
+
+<br>
+<br>
+<form action="" method="GET">
+  <input name="name" placeholder="Введите имя" value="{{ request.GET.name}}">
+  <input name="email" placeholder="Введите почту" value="{{ request.GET.email}}">
+  <input name="message" placeholder="Введите сообщение" value="{{request.GET.message}}">
+  <button type="submit">Отправить </button>
+
+</form>>
+
 {% endblock %}
