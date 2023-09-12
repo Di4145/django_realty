@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from realtys.models import Realty, RealtyType
 from django.db.models import Q
+from django.core.mail import send_mail
 # Create your views here.
 
 
@@ -15,6 +16,7 @@ def search(request):
     s1_q = request.GET.get('s1')
     s2_q = request.GET.get('s2')
     type_q = request.GET.get('type')
+
 
 
     if text_q:
@@ -47,5 +49,13 @@ def search(request):
 
 
 def detail(request, id):
+    name = request.POST.get('name')
+    email = request.POST.get('email')
+
     realty = Realty.objects.get(id=id)
+    subject = 'Новое обращение'
+    message = request.POST.get('message')
+    from_email = 'plotnikov-d@bk.ru'
+    recepient = ['plotnikov_da@npcses.ru', email, realty.manager.email]
+    send_mail(subject, message, from_email, recepient)
     return render(request, 'detail.html', {'realty': realty})
