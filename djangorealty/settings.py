@@ -52,7 +52,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
-
+    'message',
     'realtys'
 
 ]
@@ -144,10 +144,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
-EMAIL_HOST = 'smtp.mail.ru'
-EMAIL_PORT = 2525
-EMAIL_HOST_USER = "plotnikov-d@bk.ru"
-EMAIL_HOST_PASSWORD = "vPKDe15McX48Zsfep3cZ"
-EMAIL_USE_TLS = True
-EMAIL_USE_SSL = False
-# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_HOST = 'smtp.mail.ru'
+# EMAIL_PORT = 2525
+# EMAIL_HOST_USER = "plotnikov-d@bk.ru"
+# EMAIL_HOST_PASSWORD = "vPKDe15McX48Zsfep3cZ"
+# EMAIL_USE_TLS = True
+# EMAIL_USE_SSL = False
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

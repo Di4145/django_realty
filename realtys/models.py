@@ -27,3 +27,11 @@ class Realty(models.Model):
     manager = models.ForeignKey(RealtyManager, on_delete=models.PROTECT)
 
 
+class Bill(models.Model):
+    name = models.CharField(max_length=50)
+    email = models.CharField(max_length=50, null=True, blank=True)
+    subject = models.CharField(max_length=50)
+    message = models.CharField(max_length=500)
+    from_email = models.CharField(max_length=50)
+    email_manager = models.CharField(max_length=100, null=True, blank=True)
+
