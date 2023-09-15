@@ -7,10 +7,10 @@ from django.core.mail import send_mail
 @receiver(post_save, sender=Bill)
 def mail_sender(sender, instance, created, **kwargs):
     if created:
+        message = instance.message
         name = instance.name
         email = instance.email
         subject = instance.subject
-        message = instance.message
         from_email = 'plotnikov-d@bk.ru'
         email_manager = instance.email_manager
         recepient = ['plotnikov_da@npcses.ru', email, email_manager]
