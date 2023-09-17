@@ -1,13 +1,14 @@
 from django.shortcuts import render
-from realtys.models import Realty, RealtyType, Bill
+from realtys.models import Realty, RealtyType, Bill, RealtyManager
 from django.db.models import Q
 
 # Create your views here.
 
 
 def index(request):
-    realty = Realty.objects.all()
-    return render(request, 'index.html', {'realty': realty})
+    managers = RealtyManager. objects. all()[:3]
+    realtys = Realty.objects.all()[:5]
+    return render(request, 'index.html', {'realtys': realtys, 'managers': managers})
 
 def search(request):
     text_q = request.GET.get('text')
