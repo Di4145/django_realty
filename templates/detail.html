@@ -54,14 +54,8 @@
           </div>
 {{realty.info}}
 
-<br>
-<br>
-<form action="" method="POST">
-  {% csrf_token %}
-  <input name="name" placeholder="Введите имя" value="{{ request.GET.name}}">
-  <input name="email" placeholder="Введите почту" value="{{ request.GET.email}}">
-  <input name="message" placeholder="Введите сообщение" value="{{request.GET.message}}">
-  <button type="submit">Отправить </button>
+
+
 
 </form>>
 

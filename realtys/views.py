@@ -10,6 +10,21 @@ def index(request):
     realtys = Realty.objects.all()[:5]
     return render(request, 'index.html', {'realtys': realtys, 'managers': managers})
 
+
+
+def contacts(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        subject = 'Новое обращение'
+        message = request.POST.get('message')
+        from_email = 'plotnikov-d@bk.ru'
+        email_manager = realty.manager.email
+        bill_obj = Bill(name=name, email=email, subject=subject, message=message, from_email=from_email, email_manager=email_manager)
+        bill_obj.save()
+    return render(request, 'contacts.html')
+
+
 def search(request):
     text_q = request.GET.get('text')
     price1_q = request.GET.get('price1')
@@ -51,13 +66,5 @@ def search(request):
 
 def detail(request, id):
     realty = Realty.objects.get(id=id)
-    if request.method == 'POST':
-        name = request.POST.get('name')
-        email = request.POST.get('email')
-        subject = 'Новое обращение'
-        message = request.POST.get('message')
-        from_email = 'plotnikov-d@bk.ru'
-        email_manager = realty.manager.email
-        bill_obj = Bill(name=name, email=email, subject=subject, message=message, from_email=from_email, email_manager=email_manager)
-        bill_obj.save()
+
     return render(request, 'detail.html', {'realty': realty})
