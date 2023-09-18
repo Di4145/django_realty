@@ -7,6 +7,7 @@ from django.core.mail import send_mail
 @receiver(post_save, sender=Bill)
 def mail_sender(sender, instance, created, **kwargs):
     if created:
+        print('***********')
         message = instance.message
         name = instance.name
         email = instance.email

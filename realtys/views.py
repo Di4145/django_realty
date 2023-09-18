@@ -13,19 +13,21 @@ def index(request):
 
 
 def contacts(request):
+
     if request.method == 'POST':
         name = request.POST.get('name')
         email = request.POST.get('email')
         subject = 'Новое обращение'
         message = request.POST.get('message')
         from_email = 'plotnikov-d@bk.ru'
-        email_manager = realty.manager.email
+        email_manager = 'menedger@mail.ru'
         bill_obj = Bill(name=name, email=email, subject=subject, message=message, from_email=from_email, email_manager=email_manager)
         bill_obj.save()
     return render(request, 'contacts.html')
 
 
 def search(request):
+
     text_q = request.GET.get('text')
     price1_q = request.GET.get('price1')
     price2_q = request.GET.get('price2')
