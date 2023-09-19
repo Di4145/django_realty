@@ -16,7 +16,7 @@ def contacts(request):
     if request.method == 'POST':
         name = request.POST.get('name')
         email = request.POST.get('email')
-        subject = 'Новое обращение'
+        subject = request.POST.get('subject')
         message = request.POST.get('message')
         from_email = 'plotnikov-d@bk.ru'
         email_manager = 'menedger@mail.ru'
