@@ -26,6 +26,9 @@ class Realty(models.Model):
     image_cover = models.ImageField(upload_to='image_cover')
     manager = models.ForeignKey(RealtyManager, on_delete=models.PROTECT)
 
+    def __str__(self):
+        return self.header
+
 
 class Bill(models.Model):
     name = models.CharField(max_length=50)
@@ -34,4 +37,8 @@ class Bill(models.Model):
     message = models.CharField(max_length=500)
     from_email = models.CharField(max_length=50)
     email_manager = models.CharField(max_length=100, null=True, blank=True)
+
+class Gallery(models.Model):
+    image = models.ImageField(upload_to='image_gallery')
+    realty = models.ForeignKey(Realty, on_delete=models.CASCADE, related_name='images')
 
