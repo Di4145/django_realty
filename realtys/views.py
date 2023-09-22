@@ -7,12 +7,14 @@ from django.db.models import Q
 
 
 def index(request):
+    title = 'Агенство недвижимости'
     managers = RealtyManager.objects.all()[:3]
     realtys = Realty.objects.all()[:5]
-    return render(request, 'index.html', {'realtys': realtys, 'managers': managers})
+    return render(request, 'index.html', {'realtys': realtys, 'managers': managers, 'title': title})
 
 
 def contacts(request):
+    title = 'Контакты'
     if request.method == 'POST':
         name = request.POST.get('name')
         email = request.POST.get('email')
@@ -23,10 +25,11 @@ def contacts(request):
         bill_obj = Bill(name=name, email=email, subject=subject, message=message, from_email=from_email,
                         email_manager=email_manager)
         bill_obj.save()
-    return render(request, 'contacts.html')
+    return render(request, 'contacts.html', {'title': title})
 
 
 def search(request):
+    title = 'Поиск'
     text_q = request.GET.get('text')
     price1_q = request.GET.get('price1')
     price2_q = request.GET.get('price2')
@@ -60,10 +63,11 @@ def search(request):
 
     types = RealtyType.objects.all()
 
-    return render(request, 'search.html', {'realtys': realtys, 'types': types})
+    return render(request, 'search.html', {'realtys': realtys, 'types': types, 'title': title})
 
 
 def detail(request, id):
     realty = Realty.objects.get(id=id)
+    title = realty.header
 
-    return render(request, 'detail.html', {'realty': realty})
+    return render(request, 'detail.html', {'realty': realty, 'title': title})
