@@ -169,6 +169,8 @@
             </div>
           </div>
 {% for realty in realtys %}
+          {% if realty.sale %}
+
           <div class="col-md-4">
             <div class="card-box-a card-shadow">
               <div class="img-box-a">
@@ -182,14 +184,30 @@
 
                     </h2>
                   </div>
+
                   <div class="card-body-a">
+
+                    {% if realty.sale %}
+                    <div class="price-box d-flex">
+                      <span class="price-a">Стоимость ₽ <del> {{ realty.cost|intcomma }}</del>
+
+                        <font color="red" > {% widthratio realty.cost  1 realty.sale  %} </font>
+
+
+                      </span>
+
+                        </div>
+
+                    {% else %}
                     <div class="price-box d-flex">
                       <span class="price-a">Стоимость ₽ {{ realty.cost|intcomma }}</span>
                     </div>
-<!--                    <a href="property-single.html" class="link-a">Click here to view-->
+                     {% endif %}
                       <span class="bi bi-chevron-right"></span>
+
                     </a>
                   </div>
+
                   <div class="card-footer-a">
                     <ul class="card-info d-flex justify-content-around">
                       <li>
@@ -204,7 +222,75 @@
               </div>
             </div>
           </div>
+
+          {% endif %}
           {% endfor %}
+{% for realty in realtys %}
+          {% if not realty.sale %}
+           <div class="col-md-4">
+            <div class="card-box-a card-shadow">
+              <div class="img-box-a">
+                <img src="{{realty.image_cover.url}}" alt="" class="img-a img-fluid">
+              </div>
+              <div class="card-overlay">
+                <div class="card-overlay-a-content">
+                  <div class="card-header-a">
+                    <h2 class="card-title-a">
+                      <a href="{% url 'detail_page' realty.id %}">{{realty.header}}
+
+                    </h2>
+                  </div>
+
+                  <div class="card-body-a">
+
+                    {% if realty.sale %}
+                    <div class="price-box d-flex">
+                      <span class="price-a">Стоимость ₽ <del> {{ realty.cost|intcomma }}</del>
+
+                        <font color="red" > {% widthratio realty.cost  1 realty.sale  %} </font>
+
+
+                      </span>
+
+                        </div>
+
+                    {% else %}
+                    <div class="price-box d-flex">
+                      <span class="price-a">Стоимость ₽ {{ realty.cost|intcomma }}</span>
+                    </div>
+                     {% endif %}
+                      <span class="bi bi-chevron-right"></span>
+
+                    </a>
+                  </div>
+
+                  <div class="card-footer-a">
+                    <ul class="card-info d-flex justify-content-around">
+                      <li>
+                        <h4 class="card-info-title">Площадь</h4>
+                        <span>{{realty.s}}
+                          м<sup>2</sup>
+                        </span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endif %}
+{% endfor %}
+
+
+
+
+
+
+
+
+
+
+
     </section><!-- End Property Grid Single-->
 
 

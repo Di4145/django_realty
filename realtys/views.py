@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from realtys.models import Realty, RealtyType, Bill, RealtyManager
 from django.db.models import Q
+from django import template
+
 
 
 # Create your views here.
@@ -29,6 +31,8 @@ def contacts(request):
 
 
 def search(request):
+
+
     title = 'Поиск'
     text_q = request.GET.get('text')
     price1_q = request.GET.get('price1')
@@ -69,9 +73,8 @@ def search(request):
 def detail(request, id):
     realty = Realty.objects.get(id=id)
     title = realty.header
-    print(realty.sale)
     if realty.sale:
-        new_cost = realty.cost  - (realty.cost * realty.sale / 100)
+        new_cost = int(realty.cost  - (realty.cost * realty.sale))
     else:
         new_cost = 0
 
