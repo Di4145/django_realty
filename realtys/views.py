@@ -69,5 +69,11 @@ def search(request):
 def detail(request, id):
     realty = Realty.objects.get(id=id)
     title = realty.header
+    print(realty.sale)
+    if realty.sale:
+        new_cost = realty.cost  - (realty.cost * realty.sale / 100)
+    else:
+        new_cost = 0
 
-    return render(request, 'detail.html', {'realty': realty, 'title': title})
+
+    return render(request, 'detail.html', {'realty': realty, 'title': title, 'new_cost': new_cost})

@@ -13,7 +13,7 @@
           <div class="col-md-12 col-lg-8">
             <div class="title-single-box">
               <h1 class="title-single">{{realty.header}}</h1>
-              <span class="color-text-a">Chicago, IL 606543</span>
+
             </div>
           </div>
           <div class="col-md-12 col-lg-4">
@@ -61,7 +61,16 @@
 
                     </div>
                     <div class="card-title-c align-self-center">
-                      <h5 class="title-c">Стоимость ₽ {{ realty.cost|intcomma }}</h5>
+
+                       {% if realty.sale %}
+
+                      <h5 class="title-c"> Стоимость ₽ <del> {{ realty.cost|intcomma }} </del></h5>
+                      <h5 class="title-c"> <mark style="background-color: red; color: black;"> {{new_cost|intcomma }} </mark></h5>
+
+                        {% else %}
+                         <h5 class="title-c">Стоимость ₽ {{ realty.cost|intcomma }}</h5>
+                        {% endif %}
+
                     </div>
                   </div>
                 </div>
@@ -69,50 +78,6 @@
                   <div class="row">
                     <div class="col-sm-12">
                       <div class="title-box-d section-t4">
-<!--                        <h3 class="title-d">Описание недвижимости</h3>-->
-<!--                      </div>-->
-<!--                    </div>-->
-<!--                  </div>-->
-<!--                  <div class="summary-list">-->
-<!--                    <ul class="list">-->
-<!--                      <li class="d-flex justify-content-between">-->
-<!--                        <strong>Property ID:</strong>-->
-<!--                        <span>1134</span>-->
-<!--                      </li>-->
-<!--                      <li class="d-flex justify-content-between">-->
-<!--                        <strong>Location:</strong>-->
-<!--                        <span>Chicago, IL 606543</span>-->
-<!--                      </li>-->
-<!--                      <li class="d-flex justify-content-between">-->
-<!--                        <strong>Property Type:</strong>-->
-<!--                        <span>House</span>-->
-<!--                      </li>-->
-<!--                      <li class="d-flex justify-content-between">-->
-<!--                        <strong>Status:</strong>-->
-<!--                        <span>Sale</span>-->
-<!--                      </li>-->
-<!--                      <li class="d-flex justify-content-between">-->
-<!--                        <strong>Area:</strong>-->
-<!--                        <span>340m-->
-<!--                          <sup>2</sup>-->
-<!--                        </span>-->
-<!--                      </li>-->
-<!--                      <li class="d-flex justify-content-between">-->
-<!--                        <strong>Beds:</strong>-->
-<!--                        <span>4</span>-->
-<!--                      </li>-->
-<!--                      <li class="d-flex justify-content-between">-->
-<!--                        <strong>Baths:</strong>-->
-<!--                        <span>2</span>-->
-<!--                      </li>-->
-<!--                      <li class="d-flex justify-content-between">-->
-<!--                        <strong>Garage:</strong>-->
-<!--                        <span>1</span>-->
-<!--                      </li>-->
-<!--                    </ul>-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--              </div>-->
               <div class="col-md-7 col-lg-7 section-md-t3">
                 <div class="row">
                   <div class="col-sm-12">
@@ -124,6 +89,7 @@
                 <div class="property-description">
                   <p class="description color-text-a">
                     {{realty.info}}
+
                   </p>
 
                 </div>
@@ -132,71 +98,6 @@
               </div>
             </div>
           </div>
-
-<!--          <div class="col-md-12">-->
-<!--            <div class="row section-t3">-->
-<!--              <div class="col-sm-12">-->
-<!--                <div class="title-box-d">-->
-<!--                  <h3 class="title-d">Contact Agent</h3>-->
-<!--                </div>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--            <div class="row">-->
-<!--              <div class="col-md-6 col-lg-4">-->
-<!--                <img src="assets/img/agent-4.jpg" alt="" class="img-fluid">-->
-<!--              </div>-->
-<!--              <div class="col-md-6 col-lg-4">-->
-<!--&lt;!&ndash;                <div class="property-agent">&ndash;&gt;-->
-<!--&lt;!&ndash;                  <h4 class="title-agent">Anabella Geller</h4>&ndash;&gt;-->
-<!--&lt;!&ndash;                  <p class="color-text-a">&ndash;&gt;-->
-<!--&lt;!&ndash;                    Nulla porttitor accumsan tincidunt. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet&ndash;&gt;-->
-<!--&lt;!&ndash;                    dui. Quisque velit nisi,&ndash;&gt;-->
-<!--&lt;!&ndash;                    pretium ut lacinia in, elementum id enim.&ndash;&gt;-->
-<!--&lt;!&ndash;                  </p>&ndash;&gt;-->
-<!--&lt;!&ndash;                  <ul class="list-unstyled">&ndash;&gt;-->
-<!--&lt;!&ndash;                    <li class="d-flex justify-content-between">&ndash;&gt;-->
-<!--&lt;!&ndash;                      <strong>Phone:</strong>&ndash;&gt;-->
-<!--&lt;!&ndash;                      <span class="color-text-a">(222) 4568932</span>&ndash;&gt;-->
-<!--&lt;!&ndash;                    </li>&ndash;&gt;-->
-<!--&lt;!&ndash;                    <li class="d-flex justify-content-between">&ndash;&gt;-->
-<!--&lt;!&ndash;                      <strong>Mobile:</strong>&ndash;&gt;-->
-<!--&lt;!&ndash;                      <span class="color-text-a">777 287 378 737</span>&ndash;&gt;-->
-<!--&lt;!&ndash;                    </li>&ndash;&gt;-->
-<!--&lt;!&ndash;                    <li class="d-flex justify-content-between">&ndash;&gt;-->
-<!--&lt;!&ndash;                      <strong>Email:</strong>&ndash;&gt;-->
-<!--&lt;!&ndash;                      <span class="color-text-a">annabella@example.com</span>&ndash;&gt;-->
-<!--&lt;!&ndash;                    </li>&ndash;&gt;-->
-<!--&lt;!&ndash;                    <li class="d-flex justify-content-between">&ndash;&gt;-->
-<!--&lt;!&ndash;                      <strong>Skype:</strong>&ndash;&gt;-->
-<!--&lt;!&ndash;                      <span class="color-text-a">Annabela.ge</span>&ndash;&gt;-->
-<!--&lt;!&ndash;                    </li>&ndash;&gt;-->
-<!--&lt;!&ndash;                  </ul>&ndash;&gt;-->
-<!--&lt;!&ndash;                  <div class="socials-a">&ndash;&gt;-->
-<!--&lt;!&ndash;                    <ul class="list-inline">&ndash;&gt;-->
-<!--&lt;!&ndash;                      <li class="list-inline-item">&ndash;&gt;-->
-<!--&lt;!&ndash;                        <a href="#">&ndash;&gt;-->
-<!--&lt;!&ndash;                          <i class="bi bi-facebook" aria-hidden="true"></i>&ndash;&gt;-->
-<!--&lt;!&ndash;                        </a>&ndash;&gt;-->
-<!--&lt;!&ndash;                      </li>&ndash;&gt;-->
-<!--&lt;!&ndash;                      <li class="list-inline-item">&ndash;&gt;-->
-<!--&lt;!&ndash;                        <a href="#">&ndash;&gt;-->
-<!--&lt;!&ndash;                          <i class="bi bi-twitter" aria-hidden="true"></i>&ndash;&gt;-->
-<!--&lt;!&ndash;                        </a>&ndash;&gt;-->
-<!--&lt;!&ndash;                      </li>&ndash;&gt;-->
-<!--&lt;!&ndash;                      <li class="list-inline-item">&ndash;&gt;-->
-<!--&lt;!&ndash;                        <a href="#">&ndash;&gt;-->
-<!--&lt;!&ndash;                          <i class="bi bi-instagram" aria-hidden="true"></i>&ndash;&gt;-->
-<!--&lt;!&ndash;                        </a>&ndash;&gt;-->
-<!--&lt;!&ndash;                      </li>&ndash;&gt;-->
-<!--&lt;!&ndash;                      <li class="list-inline-item">&ndash;&gt;-->
-<!--&lt;!&ndash;                        <a href="#">&ndash;&gt;-->
-<!--&lt;!&ndash;                          <i class="bi bi-linkedin" aria-hidden="true"></i>&ndash;&gt;-->
-<!--&lt;!&ndash;                        </a>&ndash;&gt;-->
-<!--&lt;!&ndash;                      </li>&ndash;&gt;-->
-<!--&lt;!&ndash;                    </ul>&ndash;&gt;-->
-<!--&lt;!&ndash;                  </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                </div>&ndash;&gt;-->
-<!--&lt;!&ndash;              </div>&ndash;&gt;-->
               <div class="col-md-12 col-lg-4">
                 <div class="property-contact">
 
@@ -226,115 +127,7 @@
                     </div>
                   </form>
 
-
-
-<!--                </div>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
         </div>
       </div>
-<!--    </section>&lt;!&ndash; End Property Single&ndash;&gt;-->
-
-
-
-
-
-
-
-
-
-
-  {# #}
-{#    #}
-  {# #}
-{#    #}
-  {# #}
-{#    #}
-<!--<div class="col-md-4">-->
-
-<!--            <div class="card-box-a card-shadow">-->
-<!--              <div class="img-box-a">-->
-<!--                <img src="{{realty.image_cover.url}}" alt="" class="img-a img-fluid">-->
-<!--              </div>-->
-<!--              <div class="card-overlay">-->
-<!--                <div class="card-overlay-a-content">-->
-<!--                  <div class="card-header-a">-->
-<!--                    <h2 class="card-title-a">-->
-<!--                      <a href="{% url 'detail_page' realty.id %}">{{realty.header}}</a>>-->
-
-
-<!--                    </h2>-->
-<!--                  </div>-->
-
-<!--                  <div class="card-body-a">-->
-
-<!--                    <div class="price-box d-flex">-->
-
-<!--                      <span class="price-a">Стоимость ₽ {{ realty.cost|intcomma }}</span>-->
-<!--                    </div>-->
-
-<!--&lt;!&ndash;                    <a href="property-single.html" class="link-a">Click here to view&ndash;&gt;-->
-<!--                      <span class="bi bi-chevron-right"></span>-->
-
-<!--                    </a>-->
-
-<!--                  </div>-->
-
-<!--                  <div class="card-footer-a">-->
-
-<!--                    <ul class="card-info d-flex justify-content-around">-->
-<!--                      <li>-->
-<!--                        <h4 class="card-info-title">Площадь </h4>-->
-<!--                        <span>{{realty.s}}-->
-<!--                          м<sup>2</sup>-->
-<!--                        </span>-->
-<!--                      </li>-->
-<!--                      Менеджер-->
-
-<!--                      <br>-->
-<!--                      {{realty.manager}}-->
-<!--                    </ul>-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--              </div>-->
-<!--            </div>-->
-
-<!--          </div>-->
-
-
-<!--<br>-->
-<!--<br>-->
-<!--<form action="" method="POST">-->
-<!--  {% csrf_token %}-->
-<!--  <input name="name" placeholder="Введите имя" value="{{ request.GET.name}}">-->
-<!--  <input name="email" placeholder="Введите почту" value="{{ request.GET.email}}">-->
-<!--  <input name="message" placeholder="Введите сообщение" value="{{request.GET.message}}">-->
-<!--  <button type="submit">Отправить </button>-->
-
-<!--</form>>-->
-
-
-
-<!--&lt;!&ndash; Подключаем SweetAlert &ndash;&gt;-->
-<!--<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>-->
-
-<!--<script>-->
-<!--document.addEventListener('DOMContentLoaded', function() {-->
-<!--    // Проверяем, есть ли сообщение об успешной отправке формы-->
-<!--    var successMessage = "{{ success_message|default:'' }}";-->
-
-<!--    if (successMessage) {-->
-<!--        Swal.fire({-->
-<!--            title: 'Успех!',-->
-<!--            text: successMessage,-->
-<!--            icon: 'success',-->
-<!--            confirmButtonText: 'OK'-->
-<!--        });-->
-<!--    }-->
-<!--});-->
-<!--</script>-->
-
-
 
 {% endblock %}
