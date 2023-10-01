@@ -25,6 +25,7 @@ class Realty(models.Model):
     info = models.TextField()
     image_cover = models.ImageField(upload_to='image_cover')
     manager = models.ForeignKey(RealtyManager, on_delete=models.PROTECT)
+    sale = models.DecimalField(decimal_places=0, max_digits=3, null=True, blank=True)
 
     def __str__(self):
         return self.header
