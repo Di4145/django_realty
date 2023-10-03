@@ -27,6 +27,12 @@ class Realty(models.Model):
     manager = models.ForeignKey(RealtyManager, on_delete=models.PROTECT)
     sale = models.DecimalField(decimal_places=2, max_digits=3, null=True, blank=True, default=0)
 
+
+    def operator(self):
+        x = int(self.cost - (self.cost * self.sale))
+        return x
+
+
     def __str__(self):
         return self.header
 
