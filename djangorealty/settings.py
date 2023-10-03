@@ -52,7 +52,8 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'message',
     'realtys',
-    'easy_thumbnails'
+    'easy_thumbnails',
+    'mathfilters'
 
 ]
 

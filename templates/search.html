@@ -2,6 +2,7 @@
 {% load static %}
 {% block content %}
 {% load humanize %}
+{% load mathfilters %}
 
  <!-- ======= Property Search Section ======= -->
   <div class="click-closed"></div>
@@ -189,13 +190,15 @@
 
                     {% if realty.sale %}
                     <div class="price-box d-flex">
-                      <span class="price-a">Стоимость ₽ <del> {{ realty.cost|intcomma }}</del>
-
-                        <font color="red" > {% widthratio realty.cost  1 realty.sale  %} </font>
-
+                      <span class="price-a">Старая цена ₽ <del> {{ realty.cost|intcomma }}</del>
 
                       </span>
+                        </div>
 
+                     <div class="price-box d-flex">
+                      <span class="price-a">Новая цена ₽  <font color="red" > {{realty.cost|mul:realty.sale|intcomma  }} </font>
+
+                      </span>
                         </div>
 
                     {% else %}
@@ -247,7 +250,7 @@
                     <div class="price-box d-flex">
                       <span class="price-a">Стоимость ₽ <del> {{ realty.cost|intcomma }}</del>
 
-                        <font color="red" > {% widthratio realty.cost  1 realty.sale  %} </font>
+                        <font color="red" > {% widthratio realty.cost 1 realty.sale %} </font>
 
 
                       </span>
