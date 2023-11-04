@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from realtys.models import Realty, RealtyType, Bill, RealtyManager
+from realtys.models import Realty, RealtyType, Bill, RealtyManager, Usd
 from django.db.models import Q
 from django import template
 
@@ -31,8 +31,8 @@ def contacts(request):
 
 
 def search(request):
-
-
+    usd = Usd.objects.last()
+    rate_usd = round(1/usd.usd_now, 2)
     title = 'Поиск'
     text_q = request.GET.get('text')
     price1_q = request.GET.get('price1')
@@ -40,6 +40,7 @@ def search(request):
     s1_q = request.GET.get('s1')
     s2_q = request.GET.get('s2')
     type_q = request.GET.get('type')
+
 
     if text_q:
         text = text_q.split()
@@ -67,7 +68,7 @@ def search(request):
 
     types = RealtyType.objects.all()
 
-    return render(request, 'search.html', {'realtys': realtys, 'types': types, 'title': title})
+    return render(request, 'search.html', {'realtys': realtys, 'types': types, 'title': title, 'rate_usd': rate_usd})
 
 
 def detail(request, id):

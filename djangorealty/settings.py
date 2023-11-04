@@ -53,7 +53,8 @@ INSTALLED_APPS = [
     'message',
     'realtys',
     'easy_thumbnails',
-    'mathfilters'
+    'mathfilters',
+    'django_q',
 
 ]
 
@@ -152,3 +153,15 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # EMAIL_USE_TLS = True
 # EMAIL_USE_SSL = False
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+
+Q_CLUSTER = {
+    'name': 'DjangORM',
+    'workers': 4,
+    'retry': 600,
+    'timeout': 500,
+    'queue_limit': 50,
+    'bulk': 10,
+    'orm': 'default',
+    'catch_up': False,
+}

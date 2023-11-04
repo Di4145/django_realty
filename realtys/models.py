@@ -1,11 +1,13 @@
 from django.db import models
 
+
 # Create your models here.
 class RealtyType(models.Model):
     type = models.CharField(max_length=40)
 
     def __str__(self):
         return self.type
+
 
 class RealtyManager(models.Model):
     name = models.CharField(max_length=30)
@@ -27,11 +29,9 @@ class Realty(models.Model):
     manager = models.ForeignKey(RealtyManager, on_delete=models.PROTECT)
     sale = models.DecimalField(decimal_places=2, max_digits=3, null=True, blank=True, default=0)
 
-
     def operator(self):
         x = int(self.cost - (self.cost * self.sale))
         return x
-
 
     def __str__(self):
         return self.header
@@ -45,7 +45,15 @@ class Bill(models.Model):
     from_email = models.CharField(max_length=50)
     email_manager = models.CharField(max_length=100, null=True, blank=True)
 
+
 class Gallery(models.Model):
     image = models.ImageField(upload_to='image_gallery')
     realty = models.ForeignKey(Realty, on_delete=models.CASCADE, related_name='images')
 
+
+class Usd(models.Model):
+    usd_now = models.FloatField()
+    date = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.usd_now
